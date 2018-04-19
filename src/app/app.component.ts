@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  todos = [
+    'todo1',
+    'todo2',
+    'todo3',
+    'todo4'
+  ]
   title = 'app';
 }

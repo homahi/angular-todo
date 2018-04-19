@@ -4,20 +4,8 @@
   </header>
   <section class="main">
     <ul class="todo-list">
-      <li>
-        <div class="view">
-        todo1
-        </div>
-      </li>
-      <li>
-        <div class="view">
-        todo2
-        </div>
-      </li>
-      <li>
-        <div class="view">
-        todo3
-        </div>
+      <li *ngFor="let todo of todos">
+        <div class="view">{{todo}}</div>
       </li>
     </ul>
   </section>
