@@ -43,16 +43,10 @@ Angularの要素について
 </section>
 ```
 
+
 2. データ部分をTypeScriptに移す
-```
-  <section class="main">
-    <ul class="todo-list">
-      <li *ngFor="let todo of todos">
-        <div class="view">{{todo}}</div>
-      </li>
-    </ul>
-  </section>
-```
+
+TypeScript側に変数を定義する
 ```
 export class AppComponent {
   todos = [
@@ -63,4 +57,70 @@ export class AppComponent {
   ]
   title = 'app';
 }
+```
+
+HTML側で変数を利用する
+```
+  <section class="main">
+    <ul class="todo-list">
+      <li *ngFor="let todo of todos">
+        <div class="view">{{todo}}</div>
+      </li>
+    </ul>
+  </section>
+```
+
+3. データ部分をサービスに移譲する
+
+新たなサービスを定義する
+
+* サービスとはMVVMのモデルに該当する部分でデータソースやビジネスロジックの役割を担う
+
+`ng generate service todo`
+
+todoリストをサービス側に移譲する
+
+```
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class TodoService {
+  todos = []
+
+  constructor() {
+    this.todos = [
+      'todo1',
+      'todo2',
+      'todo3',
+      'todo4'
+    ]
+  }
+
+}
+```
+
+この時providersでの注入をわすれない
+```
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  providers: [TodoService]
+})
+export class AppComponent {
+  service: TodoService
+
+  constructor(service: TodoService) {
+    this.service = service
+  }
+}
+```
+
+HTMLはサービス側から値をとる
+
+```
+      <li *ngFor="let todo of service.todos">
+        <div class="view">{{todo}}</div>
+      </li>
+
 ```
