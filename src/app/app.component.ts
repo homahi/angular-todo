@@ -9,8 +9,14 @@ import { TodoService } from './todo.service'
 })
 export class AppComponent {
   service: TodoService
+  newTodo = ''
 
   constructor(service: TodoService) {
     this.service = service
+  }
+
+  addTodo() {
+    this.service.todos.push(this.newTodo)
+    this.newTodo = ''
   }
 }
