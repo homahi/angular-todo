@@ -124,3 +124,18 @@ HTMLはサービス側から値をとる
       </li>
 
 ```
+
+4. Todoリストの追加
+```
+  <header class="header">
+    <h1>todos</h1>
+    <input type="text" placeholder="new todo" [(ngModel)]="newTodo" (keyup.enter)="addTodo()">
+  </header>
+```
+
+```
+  addTodo() {
+    this.service.todos.push(this.newTodo)
+    this.newTodo = ''
+  }
+```
