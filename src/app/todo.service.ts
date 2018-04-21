@@ -13,4 +13,13 @@ export class TodoService {
     ]
   }
 
+  private updateStorage() {
+    localStorage.setItem('angular-todo', JSON.stringify(this.todos))
+  }
+
+  add(todo: string) {
+    this.todos.push(todo)
+    this.updateStorage()
+  }
+
 }

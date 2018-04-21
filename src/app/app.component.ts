@@ -16,7 +16,7 @@ export class AppComponent {
   }
 
   addTodo() {
-    this.service.todos.push(this.newTodo)
+    this.service.add(this.newTodo)
     this.newTodo = ''
   }
 }
