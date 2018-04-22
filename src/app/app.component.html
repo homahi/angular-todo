@@ -7,7 +7,7 @@
     <ul class="todo-list">
       <li *ngFor="let todo of service.todos; let index = index">
         <div class="view">{{todo}}
-        <button (click)="deleteTodo(index)">delete</button>
+          <button (click)="deleteTodo(index)">delete</button>
         </div>
       </li>
     </ul>

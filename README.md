@@ -139,3 +139,31 @@ HTMLはサービス側から値をとる
     this.newTodo = ''
   }
 ```
+
+5. Todoリストの保存をする
+
+AppComponent
+```
+  addTodo() {
+    this.service.add(this.newTodo)
+    this.newTodo = ''
+  }
+```
+
+TodoService
+```
+  add(todo: string) {
+    this.todos.push(todo)
+    this.updateStorage()
+  }
+  private updateStorage() {
+    localStorage.setItem('angular-todo', JSON.stringify(this.todos))
+  }
+```
+
+6. TodoリストをlocalStorageから読み込む
+```
+  constructor() {
+    this.todos = JSON.parse(localStorage.getItem('angular-todo') || '[]')
+  }
+```
