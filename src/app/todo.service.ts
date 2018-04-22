@@ -5,12 +5,7 @@ export class TodoService {
   todos = []
 
   constructor() {
-    this.todos = [
-      'todo1',
-      'todo2',
-      'todo3',
-      'todo4'
-    ]
+    this.todos = JSON.parse(localStorage.getItem('angular-todo') || '[]')
   }
 
   private updateStorage() {
@@ -19,6 +14,11 @@ export class TodoService {
 
   add(todo: string) {
     this.todos.push(todo)
+    this.updateStorage()
+  }
+
+  delete(index: number) {
+    this.todos.splice(index,1)
     this.updateStorage()
   }
 

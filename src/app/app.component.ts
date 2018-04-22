@@ -19,4 +19,8 @@ export class AppComponent {
     this.service.add(this.newTodo)
     this.newTodo = ''
   }
+
+  deleteTodo(index: number)  {
+    this.service.delete(index)
+  }
 }
