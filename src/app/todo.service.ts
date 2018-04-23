@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TodoService {
-  todos = []
+  todos:Array<Todo> = []
 
   constructor() {
     this.todos = JSON.parse(localStorage.getItem('angular-todo') || '[]')
@@ -12,14 +12,25 @@ export class TodoService {
     localStorage.setItem('angular-todo', JSON.stringify(this.todos))
   }
 
-  add(todo: string) {
-    this.todos.push(todo)
+  add(title: string) {
+    this.todos.push(new Todo(title))
     this.updateStorage()
   }
 
   delete(index: number) {
     this.todos.splice(index,1)
     this.updateStorage()
+  }
+
+}
+
+export class Todo {
+  completed: Boolean;
+  title: String;
+
+  constructor(title: String) {
+    this.title = title
+    this.completed = false
   }
 
 }
