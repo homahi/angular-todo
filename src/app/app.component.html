@@ -5,9 +5,9 @@
   </header>
   <section class="main">
     <ul class="todo-list">
-      <li *ngFor="let todo of service.todos">
+      <li *ngFor="let todo of service.todos" [class.completed]="todo.completed">
         <div class="view">
-        <input class="toggle" type="checkbox" (click)="toggleCompletion(todo)">
+        <input class="toggle" type="checkbox" (click)="toggleCompletion(todo)" [checked]="todo.completed">
         {{todo.title}}
           <button (click)="deleteTodo(todo)">delete</button>
         </div>
