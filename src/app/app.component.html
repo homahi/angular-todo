@@ -5,9 +5,11 @@
   </header>
   <section class="main">
     <ul class="todo-list">
-      <li *ngFor="let todo of service.todos; let index = index">
-        <div class="view">{{todo.title}}
-          <button (click)="deleteTodo(index)">delete</button>
+      <li *ngFor="let todo of service.todos">
+        <div class="view">
+        <input class="toggle" type="checkbox" (click)="toggleCompletion(todo)">
+        {{todo.title}}
+          <button (click)="deleteTodo(todo)">delete</button>
         </div>
       </li>
     </ul>

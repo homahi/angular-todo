@@ -17,8 +17,13 @@ export class TodoService {
     this.updateStorage()
   }
 
-  delete(index: number) {
-    this.todos.splice(index,1)
+  delete(todo: Todo) {
+    this.todos.splice(this.todos.indexOf(todo),1)
+    this.updateStorage()
+  }
+
+  toggleCompletion(todo: Todo) {
+    todo.completed = !todo.completed
     this.updateStorage()
   }
 

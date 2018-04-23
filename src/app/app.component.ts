@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodoService } from './todo.service'
+import { Todo, TodoService } from './todo.service'
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,11 @@ export class AppComponent {
     this.newTodo = ''
   }
 
-  deleteTodo(index: number)  {
-    this.service.delete(index)
+  deleteTodo(todo: Todo)  {
+    this.service.delete(todo)
+  }
+
+  toggleCompletion(todo: Todo) {
+    this.service.toggleCompletion(todo);
   }
 }
